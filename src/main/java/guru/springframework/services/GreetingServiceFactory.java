@@ -13,6 +13,8 @@ public class GreetingServiceFactory {
 
     public GreetingService createGreetingService(String lang) {
 
+        System.out.println("createGreetingService");
+
         switch (lang){
             case "en":
                 return new PrimaryGreetingService(greetingRepository);

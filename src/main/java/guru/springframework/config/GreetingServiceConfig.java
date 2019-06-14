@@ -14,8 +14,11 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class GreetingServiceConfig {
 
+
     @Bean
     GreetingServiceFactory greetingServiceFactory(GreetingRepository repository){
+
+        System.out.println("@bean repository " +repository.getSpanishGreeting());
         return new GreetingServiceFactory(repository);
     }
 
@@ -23,6 +26,7 @@ public class GreetingServiceConfig {
     @Primary
     @Profile({"default", "en"})
     GreetingService primaryGreetingService(GreetingServiceFactory greetingServiceFactory){
+        System.out.println("Configuration en-------");
         return greetingServiceFactory.createGreetingService("en");
     }
 
@@ -30,6 +34,7 @@ public class GreetingServiceConfig {
     @Primary
     @Profile("es")
     GreetingService primarySpanishGreetingService(GreetingServiceFactory greetingServiceFactory){
+        System.out.println("Configuration es-------");
         return greetingServiceFactory.createGreetingService("es");
     }
 
@@ -39,4 +44,5 @@ public class GreetingServiceConfig {
     GreetingService primaryGermanGreetingService(GreetingServiceFactory greetingServiceFactory){
         return greetingServiceFactory.createGreetingService("de");
     }
+
 }

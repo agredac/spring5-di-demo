@@ -12,11 +12,12 @@ public class MyController {
     private GreetingService greetingService;
 
     public MyController(GreetingService greetingService) {
+        System.out.println("MyController");
         this.greetingService = greetingService;
     }
 
-    public String hello(){
-        System.out.println("Hello!!! ");
+    public String hello() {
+        System.out.println("MyController!!! hello");
 
         return greetingService.sayGreeting();
     }
